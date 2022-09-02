@@ -1,0 +1,27 @@
+{
+  "name": "academia",
+  "version": "1.0.0",
+  "description": "Academia is a web app which can be used by teachers to assign assignments to their students and keep a record of thier submission time. They can also send out test papers and put a bar on time and receive the answer sheets without the need of being present in person. It can be used to hand out lecture notes, announce test results and many more things.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChaitanyaAgarwal97/academia.git"
+  },
+  "keywords": [
+    "academia",
+    "classroom",
+    "assignments",
+    "homework",
+    "classroom",
+    "clone"
+  ],
+  "author": "Chaitanya Agarwal chaitanyaagarwal02@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChaitanyaAgarwal97/academia/issues"
+  },
+  "homepage": "https://github.com/ChaitanyaAgarwal97/academia#readme"
+}
