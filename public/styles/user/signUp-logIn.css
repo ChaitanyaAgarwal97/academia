@@ -1,0 +1,95 @@
+.container{
+    height: 41rem;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    border:2px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 18px 25px 21px rgb(161, 161, 161);
+    /* background-color: white; */
+    color: white;
+}
+
+body{
+    background: url('../../images/signUp-logIn.jpg');
+}
+
+.form-container{
+    padding: 2rem;
+    display: flex;
+}
+
+.tabs{
+    display: flex;
+}
+
+.tab{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.tab p{
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.signUp-unselected{
+    z-index: 1;
+    box-shadow: -5px -6px 17px rgb(161, 161, 161) inset;
+    position: relative;
+    border-bottom: 3px solid white;
+    border-right: 3px solid white;
+    border-radius: 0 0 15px 0;
+}
+
+.logIn-unselected{
+    z-index: 1;
+    box-shadow: 5px -6px 17px rgb(161, 161, 161) inset;
+    border-bottom: 3px solid white;
+    border-left: 3px solid white;
+    border-radius: 0 0 0 15px;
+}
+
+#logInForm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#signUpForm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#logInForm div, #logInForm button{
+    margin-top: 1rem;
+}
+
+#signUpForm div, #signUpForm button{
+    margin-top: 1rem;
+}
+
+#logInForm label{
+    width: 20%;
+}
+
+#signUpForm label{
+    width: 25%;
+}
+
+#error{
+    display: none;
+    color: rgb(219, 53, 53);
+    background-color: rgb(228, 76, 76);
+    font-size: 1rem;
+}

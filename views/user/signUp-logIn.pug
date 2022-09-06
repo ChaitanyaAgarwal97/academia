@@ -1,0 +1,39 @@
+extends ../base.pug
+
+block title
+    title Academia | SignUp/Login
+
+block styles 
+    link(rel='stylesheet' href='/styles/user/signUp-logIn.css')
+
+block content
+    div(class="container")
+        div(class="tabs")
+            span(id="signUpTab" class="tab")
+                p Sign Up
+            span(id="logInTab" class="tab logIn-unselected")
+                p Log In
+        div(class="form-container")
+            form(id="logInForm")
+                div(class="mb-3")
+                    label(class="logIn" for='logInEmail') Email address
+                    input(id="logInEmail" class="form-control" type='email')
+                div(class="mb-3")
+                    label(class="logIn" for='logInPassword') Password
+                    input(id="logInPassword" class="form-control" type='password')
+                button(class="btn btn-primary" id="logInSubmit" type='submit') LogIn
+            
+            form(id="signUpForm")
+                div(class="mb-3")
+                    label(class="logInText" for='signUpName') Name
+                    input(class="form-control logInInput" id="signUpName" name="name" type='text')
+                div(class="mb-3")
+                    label(class="logInText" for='signUpEmail') Email address
+                    input(id="signUpEmail" class="form-control logInInput" name="email" type='email')
+                div(class="mb-3")
+                    label(class="logInText" for='signUpPassword') Password
+                    input(id="signUpPassword" class="form-control logInInput" name="password" type='password')
+                button(id="signUpSubmit" class="btn btn-primary" type='submit') SignUp
+
+block scripts
+    script(src='/js/user/signUp-logIn.js')
