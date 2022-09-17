@@ -14,25 +14,25 @@ block content
             span(id="logInTab" class="tab logIn-unselected")
                 p Log In
         div(class="form-container")
-            form(id="logInForm")
+            form(id="logInForm" method="POST" action="/user/logIn")
                 div(class="mb-3")
                     label(class="logIn" for='logInEmail') Email address
-                    input(id="logInEmail" class="form-control" type='email')
+                    input(id="logInEmail" class="form-control" type='email' name='email')
                 div(class="mb-3")
                     label(class="logIn" for='logInPassword') Password
-                    input(id="logInPassword" class="form-control" type='password')
+                    input(id="logInPassword" class="form-control" type='password' name='password')
                 button(class="btn btn-primary" id="logInSubmit" type='submit') LogIn
             
-            form(id="signUpForm")
+            form(id="signUpForm" method="POST" action="/user/signUp")
                 div(class="mb-3")
                     label(class="logInText" for='signUpName') Name
-                    input(class="form-control logInInput" id="signUpName" name="name" type='text')
+                    input(class="form-control" id="signUpName" name="name" type='text')
                 div(class="mb-3")
                     label(class="logInText" for='signUpEmail') Email address
-                    input(id="signUpEmail" class="form-control logInInput" name="email" type='email')
+                    input(id="signUpEmail" class="form-control" name="email" type='email')
                 div(class="mb-3")
                     label(class="logInText" for='signUpPassword') Password
-                    input(id="signUpPassword" class="form-control logInInput" name="password" type='password')
+                    input(id="signUpPassword" class="form-control" name="password" type='password')
                 button(id="signUpSubmit" class="btn btn-primary" type='submit') SignUp
 
 block scripts
