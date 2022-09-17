@@ -8,20 +8,40 @@ async function signUp(req, res) {
     }
 
     try {
-        userServices.addUser(userObj);
-    }
-    catch(e) {
-        res.status(500).send("Something went wrong");
+        const user = await userServices.addUser(userObj);
+
+        return res.status(201).send("User Created");
+    } catch(err) {
+        err = JSON.parse(err.message); 
+        console.table(err);
+
+        return res.status(err.httpCode).send(err.msg);
     }
 }
 
 async function logIn(req, res) {
+    const userObj = {
+        email: req.body.email,
+        password: req.body.password,
+    };
 
+    try {
+        const user = await userServices.getUser(userObj);
+
+        return res.status(200).cookie("ljwt", user.tokens[user.tokens.length - 1].token, {
+            maxAge: 2592000000,
+            overwrite: true,
+            httpOnly: true,
+        }).send("Logged In");
+    } catch(err) {
+        err = JSON.parse(err.message); 
+        console.table(err);
+
+        return res.status(err.httpCode).send(err.msg);
+    }
 }
-
-console.log("hello from ");
 
 module.exports = {
     signUp,
-    logIn
+    logIn,
 };
