@@ -3,6 +3,10 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-mongoose.connect(process.env.DATABASE_URI).catch((error) =>{
+mongoose.connect(process.env.DATABASE_URI)
+.then((msg) => {
+    console.log('success');
+})
+.catch((error) =>{
     console.log(error);
 });
