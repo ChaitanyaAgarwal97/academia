@@ -1,10 +1,13 @@
 const express = require("express");
 const userController = require("./user.controller");
+const { auth } = require("../middlewares/auth.common");
 
 let router = express.Router();
 
-router.get("/", (req, res) => {
-    res.render("user/signUp-logIn");
+router.get("/", auth, (req, res) => {
+    if(req.isAuth) return res.send("U are already Logged In");
+
+    return res.render("user/signUp-logIn");
 });
 
 router.post("/signUp", userController.signUp);
