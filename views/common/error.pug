@@ -1,0 +1,13 @@
+extends ../base.pug
+
+block title 
+    title Academia | Error 
+
+block styles
+    link(rel="stylesheet" href="/styles/common/error.css")
+
+block content 
+    include ../includes/navbar.pug
+
+    div(class="error")
+    h2(class="mt-4")= error

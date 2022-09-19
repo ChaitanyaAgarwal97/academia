@@ -1,0 +1,16 @@
+.error{
+    background-image: url("../../images/404-1.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100vw;
+    height: 60vh;
+    margin-top: 10vh;
+}
+
+h2 {
+    display: block;
+    display: flex;
+    justify-content: center;
+    color: #0D6EFD;
+}

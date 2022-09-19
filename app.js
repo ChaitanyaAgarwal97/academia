@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const { auth } = require("./src/middlewares/auth.common");
 
 //  App configuration
 const app = express();
@@ -13,12 +14,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Routes
-const indexRoutes = require("./src/home/index.routes");
-const userRoutes = require("./src/user/user.routes");
+app.use(auth);
 
-app.use(indexRoutes);
+// Routes
+const homeRoutes = require("./src/home/home.routes");
+const userRoutes = require("./src/user/user.routes");
+const indexRoutes = require("./src/index.routes");
+
+app.use(homeRoutes);
 app.use("/user", userRoutes);
+app.use(indexRoutes);
 
 //  App listener
 app.listen(PORT, () => {
