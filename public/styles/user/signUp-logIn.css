@@ -86,10 +86,3 @@ body{
 #signUpForm label{
     width: 25%;
 }
-
-#error{
-    display: none;
-    color: rgb(219, 53, 53);
-    background-color: rgb(228, 76, 76);
-    font-size: 1rem;
-}

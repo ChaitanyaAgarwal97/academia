@@ -13,6 +13,12 @@ block content
                 p Sign Up
             span(id="logInTab" class="tab logIn-unselected")
                 p Log In
+        
+        //- Error 
+        if msg
+            div(class="alert alert-" + msg.type + " mt-2 alert-dismissible fade show" role="alert")= msg.body 
+                button(type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close")
+        
         div(class="form-container")
             form(id="logInForm" method="POST" action="/user/logIn")
                 div(class="mb-3")
