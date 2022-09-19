@@ -21,6 +21,22 @@ UserSchema = new mongoose.Schema({
             }
         }
     ],
+    classes_joined: [
+        {
+            class_id: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Class",
+            }, 
+        }
+    ],
+    classes_owned: [
+        {
+            class_id: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Class",
+            }, 
+        }
+    ]
 });
 
 const User = new mongoose.model("User", UserSchema);
