@@ -1,0 +1,23 @@
+extends ../base.pug
+
+block title
+    title Academia | Dashboard 
+
+block styles 
+    link(rel="stylesheet" href="/styles/includes/drop-down.css")
+    link(rel="stylesheet" href="/styles/user/dashboard.css")
+
+block content 
+    //- Navbar
+    include ../includes/navbar.pug
+
+    //- Main Content
+    div(class="gap-2 justify-content-md-end mt-2 me-2 join-class-btns")
+        a(class="btn btn-primary me-md-2") Create Class
+        a(class="btn btn-primary" ) Join Class
+
+    //- if !user.classes_joined && !user.classes_owned
+    div(class="no-classes")
+    h4(class="mt-4") Join or Create a Class
+            
+            

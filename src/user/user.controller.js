@@ -1,3 +1,4 @@
+const e = require("express");
 const userServices = require("./user.services");
 
 async function signUp(req, res) {
@@ -10,12 +11,25 @@ async function signUp(req, res) {
     try {
         const user = await userServices.addUser(userObj);
 
-        return res.status(201).send("User Created");
+        return res.status(201).render("user/signUp-logIn", {
+            msg: {
+                type: "success",
+                body: "Account Created Successfully!",
+            },
+        });
     } catch(err) {
-        err = JSON.parse(err.message); 
         console.table(err);
+        if (!err.httpCode) {
+            err.httpCode = 500;
+            err.msg = "Something went wrong";
+        }
 
-        return res.status(err.httpCode).send(err.msg);
+        return res.status(err.httpCode).render("user/signUp-logIn", {
+            msg:{
+                type: "danger",
+                body: err.msg,
+            },
+        });
     }
 }
 
@@ -32,16 +46,33 @@ async function logIn(req, res) {
             maxAge: 2592000000,
             overwrite: true,
             httpOnly: true,
-        }).send("Logged In");
+        }).redirect("/user/dashboard");
     } catch(err) {
-        err = JSON.parse(err.message); 
-        console.table(err);
+        if (!err.httpCode) {
+            err.httpCode = 500;
+            err.msg = "Something went wrong";
+        }
 
-        return res.status(err.httpCode).send(err.msg);
+        return res.status(err.httpCode).render("user/signUp-logIn", {
+            msg:{
+                type: "danger",
+                body: err.msg,
+            },
+        });
     }
+}
+
+function dashboard(req, res) {
+    if (req.isAuth) return res.render("user/dashboard", {
+        page: "dashboard",
+        user: req.user,
+    });
+
+    return res.redirect("/");
 }
 
 module.exports = {
     signUp,
     logIn,
+    dashboard,
 };

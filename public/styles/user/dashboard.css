@@ -1,0 +1,34 @@
+/* Class buttons css */
+.join-class-btns {
+    display: grid;
+    margin-left: 8px;
+}
+
+@media screen and (min-width:335px) and (max-width: 990px) {
+    .join-class-btns {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+@media screen and (min-width: 990px) {
+    .join-class-btns {
+        display: none;
+    }
+}
+
+/* No Classes css */
+.no-classes{
+    background-image: url("https://www.gstatic.com/classroom/empty_states_home.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100vw;
+    height: 27vh;
+    margin-top: 32.5vh;
+}
+
+h4 {
+    display: flex;
+    justify-content: center;
+}

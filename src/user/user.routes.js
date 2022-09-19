@@ -5,7 +5,7 @@ const { auth } = require("../middlewares/auth.common");
 let router = express.Router();
 
 router.get("/", auth, (req, res) => {
-    if(req.isAuth) return res.send("U are already Logged In");
+    if(req.isAuth) return res.redirect("/user/dashboard");
 
     return res.render("user/signUp-logIn");
 });
@@ -13,6 +13,8 @@ router.get("/", auth, (req, res) => {
 router.post("/signUp", userController.signUp);
 
 router.post("/logIn", userController.logIn);
+
+router.get("/dashboard", userController.dashboard);
 
 
 module.exports = router;
