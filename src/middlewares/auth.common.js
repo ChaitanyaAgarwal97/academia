@@ -7,10 +7,9 @@ dotenv.config();
 async function auth(req, res, next) {
     try {
         const token = req.cookies.ljwt;
-
+        
         if(!token) {
-            req.isAuth = false;
-            next();
+            throw "";
         }
 
         let user = jwt.tokenVerify(token);
@@ -22,7 +21,6 @@ async function auth(req, res, next) {
             req.user = user;
         }
     } catch(err) {
-        res.clearCookie("ljwt");
         req.isAuth = false;
     }
 
