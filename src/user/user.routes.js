@@ -14,6 +14,8 @@ router.post("/signUp", userController.signUp);
 
 router.post("/logIn", userController.logIn);
 
+router.get("/logOut", userController.logOut);
+
 router.get("/dashboard", userController.dashboard);
 
 

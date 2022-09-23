@@ -1,4 +1,3 @@
-const e = require("express");
 const userServices = require("./user.services");
 
 async function signUp(req, res) {
@@ -62,6 +61,27 @@ async function logIn(req, res) {
     }
 }
 
+async function logOut(req, res) {
+    if (!req.isAuth) return res.status(400).redirect("/");
+
+    try {
+        let reqObj = {
+            user: req.user,
+            token: req.cookies.ljwt,
+        };
+
+        await userServices.logOut(reqObj);
+
+        return res.clearCookie("ljwt").redirect("/");
+    } catch(error) {
+        console.log(error);
+        
+        return res.status(500).render("common/error", {
+            error: "Error 500! Sorry, something went wrong.",
+        });
+    }    
+}
+
 function dashboard(req, res) {
     if (req.isAuth) return res.render("user/dashboard", {
         page: "dashboard",
@@ -75,4 +95,5 @@ module.exports = {
     signUp,
     logIn,
     dashboard,
+    logOut,
 };

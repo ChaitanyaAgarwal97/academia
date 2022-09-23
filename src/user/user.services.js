@@ -65,7 +65,24 @@ async function getUser(userObj) {
     }
 }
 
+async function logOut(reqObj) {
+    try {
+        reqObj.user.tokens = reqObj.user.tokens.filter(ele => {
+            return ele.token != reqObj.token;
+        });
+
+        await reqObj.user.save();
+
+        return;
+    } catch(err) {
+        throw err;
+    }
+
+
+}
+
 module.exports = {
     addUser,
     getUser,
+    logOut, 
 };
