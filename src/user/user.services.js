@@ -77,12 +77,23 @@ async function logOut(reqObj) {
     } catch(err) {
         throw err;
     }
+}
 
+async function addOwnedClass(userId, classId) {
+    try {
+        let user = await User.findById(userId);
+        
+        user.classes_owned.push(classId);
 
+        await user.save();
+    } catch(err) {
+        throw err;
+    }
 }
 
 module.exports = {
     addUser,
     getUser,
     logOut, 
+    addOwnedClass,
 };

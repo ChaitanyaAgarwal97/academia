@@ -8,14 +8,15 @@ div(id="myModal" class="modal")
     // Modal Form
     form(method="POST" action="/class/create")
         div(class="form-floating")        
-            input(type="text" class="form-control mb-3" id="className" placeholder="name@example.com")
-            label(for="className") Class Name
+            input(type="text" class="form-control mb-3" id="name" name="name" placeholder="name@example.com")
+            label(for="name") Class Name
         
         div(class="form-floating")        
-            input(type="text" class="form-control mb-3" id="section" placeholder="A, B, etc.")
+            input(type="text" class="form-control mb-3" id="section" name="section" placeholder="A, B, etc.")
             label(for="section") Section
 
         div(class="form-floating")        
-            input(type="text" class="form-control mb-3" id="subject" placeholder="Physics")
+            input(type="text" class="form-control mb-3" id="subject" name="subject" placeholder="Physics")
             label(for="subject") Subject
+
         button(type="submit" class="btn btn-primary") Submit
