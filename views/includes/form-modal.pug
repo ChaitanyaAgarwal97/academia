@@ -1,0 +1,22 @@
+div(id="myModal" class="modal")
+  div(class="modal-content")
+    span(class="close") &times;
+
+    //- Modal heading
+    h4(class="mb-4") Create Class 
+
+    // Modal Form
+    form(method="POST" action="/class/create")
+        div(class="form-floating")        
+            input(type="text" class="form-control mb-3" id="name" name="name" placeholder="name@example.com")
+            label(for="name") Class Name
+        
+        div(class="form-floating")        
+            input(type="text" class="form-control mb-3" id="section" name="section" placeholder="A, B, etc.")
+            label(for="section") Section
+
+        div(class="form-floating")        
+            input(type="text" class="form-control mb-3" id="subject" name="subject" placeholder="Physics")
+            label(for="subject") Subject
+
+        button(type="submit" class="btn btn-primary") Submit

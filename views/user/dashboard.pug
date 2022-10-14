@@ -6,18 +6,28 @@ block title
 block styles 
     link(rel="stylesheet" href="/styles/includes/drop-down.css")
     link(rel="stylesheet" href="/styles/user/dashboard.css")
+    link(rel="stylesheet" href="/styles/includes/form-modal.css")
 
 block content 
     //- Navbar
     include ../includes/navbar.pug
 
+
     //- Main Content
     div(class="gap-2 justify-content-md-end mt-2 me-2 join-class-btns")
-        a(class="btn btn-primary me-md-2") Create Class
+        a(class="btn btn-primary me-md-2" class="createClass") Create Class
         a(class="btn btn-primary" ) Join Class
+    
+    if msg
+        div(class="alert alert-" + msg.type + " mt-2 alert-dismissible fade show" role="alert")= msg.body 
+            button(type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close")
+
+    include ../includes/form-modal.pug
 
     //- if !user.classes_joined && !user.classes_owned
     div(class="no-classes")
     h4(class="mt-4") Join or Create a Class
-            
+
+block scripts 
+    script(src="/js/includes/form-modal.js") 
             
