@@ -3,6 +3,7 @@ const path = require("path");
 const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const { auth } = require("./src/middlewares/auth.common");
+const compression = require("compression");
 
 //  App configuration
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(helmet());
+app.use(compression());
 
 app.use(auth);
 
