@@ -29,6 +29,34 @@ async function createClass(req, res) {
     }
 }
 
+async function joinClass(req, res) {
+    let obj = {
+        code: req.body.code,
+        student: req.user,
+    };
+
+    try {
+        await classServices.join(obj);
+
+        return res.status(200).redirect("/user/dashboard");
+    } catch(err) {
+        console.log(err);
+        if (!err.httpCode) {
+            err.httpCode = 500;
+            err.msg = "Something went wrong";
+        }
+
+        return res.status(err.httpCode).render("user/dashboard", {
+            page: "dashboard",
+            msg:{
+                type: "danger",
+                body: err.msg,
+            },
+        });
+    }
+}
+
 module.exports = {
     createClass,
+    joinClass,
 }

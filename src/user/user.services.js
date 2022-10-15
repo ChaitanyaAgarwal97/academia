@@ -91,9 +91,20 @@ async function addOwnedClass(userId, classId) {
     }
 }
 
+async function addJoinedClass(user, classId) {
+    try {
+        user.classes_joined.push(classId);
+        
+        await user.save();
+    } catch(err) {
+        throw err;
+    }
+}
+
 module.exports = {
     addUser,
     getUser,
     logOut, 
     addOwnedClass,
+    addJoinedClass,
 };

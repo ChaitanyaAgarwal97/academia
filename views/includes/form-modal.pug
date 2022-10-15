@@ -1,4 +1,4 @@
-div(id="myModal" class="modal")
+div(id="createClassModal" class="modal")
   div(class="modal-content")
     span(class="close") &times;
 
@@ -8,7 +8,7 @@ div(id="myModal" class="modal")
     // Modal Form
     form(method="POST" action="/class/create")
         div(class="form-floating")        
-            input(type="text" class="form-control mb-3" id="name" name="name" placeholder="name@example.com")
+            input(type="text" class="form-control mb-3" id="name" name="name" placeholder="name@example.com" required=true)
             label(for="name") Class Name
         
         div(class="form-floating")        
@@ -18,5 +18,20 @@ div(id="myModal" class="modal")
         div(class="form-floating")        
             input(type="text" class="form-control mb-3" id="subject" name="subject" placeholder="Physics")
             label(for="subject") Subject
+
+        button(type="submit" class="btn btn-primary") Submit
+
+div(id="joinClassModal" class="modal")
+  div(class="modal-content")
+    span(class="close") &times;
+
+    //- Modal heading
+    h4(class="mb-4") Join Class 
+
+    // Modal Form
+    form(method="POST" action="/class/join")
+        div(class="form-floating")        
+            input(type="text" class="form-control mb-3" id="code" name="code" placeholder="eg. fg1289" required=true)
+            label(for="code") Class Code
 
         button(type="submit" class="btn btn-primary") Submit

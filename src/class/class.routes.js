@@ -6,4 +6,6 @@ let router = express.Router();
 
 router.post("/create", auth, classController.createClass);
 
+router.post("/join", auth, classController.joinClass);
+
 module.exports = router;
