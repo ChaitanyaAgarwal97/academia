@@ -1,0 +1,14 @@
+.class-card-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+}
+
+.card {
+    width: 13rem;
+}
+
+.card-buttons {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+}
