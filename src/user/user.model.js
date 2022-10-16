@@ -23,18 +23,14 @@ UserSchema = new mongoose.Schema({
     ],
     classes_joined: [
         {
-            class_id: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "Class",
-            }, 
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Class",
         }
     ],
     classes_owned: [
         {
-            class_id: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "Class",
-            }, 
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Class", 
         }
     ]
 });

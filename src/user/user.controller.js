@@ -82,11 +82,28 @@ async function logOut(req, res) {
     }    
 }
 
-function dashboard(req, res) {
-    if (req.isAuth) return res.render("user/dashboard", {
-        page: "dashboard",
-        user: req.user,
-    });
+async function dashboard(req, res) {
+    if (req.isAuth) {
+        popObj = {
+            user: req.user,
+            paths: [
+                {
+                    path: "classes_joined",
+                    select: "name subject section",
+                },
+                {
+                    path: "classes_owned",
+                    select: "name subject section",
+                },
+            ],
+        };
+        let { _doc: { tokens, password, _id, __v, ...user } } = await userServices.classPopulate(popObj);
+        
+        return res.render("user/dashboard", {
+            page: "dashboard",
+            user: user,
+        });
+    } 
 
     return res.redirect("/");
 }

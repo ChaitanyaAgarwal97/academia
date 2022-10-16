@@ -4,6 +4,7 @@ const User = require('./user.model');
 const { hashObj, hashObjCompare } = require("../utils/hash");
 const jwt = require("../utils/jwt");
 const { HttpResponseError } = require("../utils/error.helper");
+const Class = require("../class/class.model");
 
 async function addUser(userObj) {
     try {
@@ -101,10 +102,15 @@ async function addJoinedClass(user, classId) {
     }
 }
 
+async function classPopulate({ user, paths }) {
+    return await user.populate(paths);
+}
+
 module.exports = {
     addUser,
     getUser,
     logOut, 
     addOwnedClass,
     addJoinedClass,
+    classPopulate,
 };
