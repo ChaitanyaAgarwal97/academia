@@ -14,7 +14,13 @@ ClassSchema = new mongoose.Schema({
     },
     code: {
         type: String,
-        default: uuidv4().slice(0,6),
+        default: function() {
+            let code = '';
+            uuidv4().split("-").map((value) => {
+                code += value.slice(0,3);
+            }).toString();
+            return code.slice(0, (Math.random() * 100) % 2 == 0 ? 6 : 8);
+        }
     },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
@@ -23,10 +29,8 @@ ClassSchema = new mongoose.Schema({
     },
     students: [
         {
-            user_id: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "User",
-            }
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
         }
     ],
 });

@@ -1,0 +1,8 @@
+div(class="card mb-3")
+    div(class="card-body")
+        h5(class="card-title")= val.name
+        h6(class="card-subtitle mb-2 text-muted")= `Section: ${val.section ? val.section : " "}`
+        h6(class="card-subtitle mb-3 text-muted")= `Subject: ${val.subject ? val.subject : " "}`
+        div(class="card-buttons")
+            a(href="/class/get/" + val._id class="btn btn-primary mt-4") Open
+            a(href="#" class="btn btn-danger mt-4") Leave

@@ -7,6 +7,7 @@ block styles
     link(rel="stylesheet" href="/styles/includes/drop-down.css")
     link(rel="stylesheet" href="/styles/user/dashboard.css")
     link(rel="stylesheet" href="/styles/includes/form-modal.css")
+    link(rel="stylesheet" href="/styles/includes/class-card.css")
 
 block content 
     //- Navbar
@@ -24,9 +25,23 @@ block content
 
     include ../includes/form-modal.pug
 
-    //- if !user.classes_joined && !user.classes_owned
-    div(class="no-classes")
-    h4(class="mt-4") Join or Create a Class
+    
+    if !user.classes_joined && !user.classes_owned
+        div(class="no-classes")
+        h4(class="mt-4") Join or Create a Class
+    else
+        div(class="m-5")
+            if user.classes_joined
+                h3(class="mb-4") Joined
+                div(class="class-card-container mb-5")
+                    each val in user.classes_joined
+                        include ../includes/class-card.pug
+
+            if user.classes_owned
+                h3(class="mb-4") Owned
+                div(class="class-card-container")
+                    each val in user.classes_owned
+                        include ../includes/class-card.pug
 
 block scripts 
     script(src="/js/includes/form-modal.js") 
