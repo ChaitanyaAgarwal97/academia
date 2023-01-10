@@ -1,0 +1,26 @@
+version: '3'
+services:
+  academia:
+    build: 
+      context: .
+      args: 
+        NODE_ENV: development
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - ./.env
+    volumes:
+      - ./:/academia
+      - /academia/node_modules
+    command: npm run dev
+  
+  academia-mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - academia-mongo-db:/data/db
+    env_file:
+      - ./.env
+  
+volumes:
+  academia-mongo-db:
