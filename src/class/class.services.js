@@ -1,4 +1,4 @@
-require("../../config/db.config");
+require("../db.conn");
 
 const Class = require("./class.model");
 const { HttpResponseError } = require("../utils/error.helper");

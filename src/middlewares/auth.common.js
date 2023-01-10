@@ -1,8 +1,5 @@
 const jwt = require("../utils/jwt");
-const dotenv = require("dotenv");
 const User = require("../user/user.model");
-
-dotenv.config();
 
 async function auth(req, res, next) {
     try {
