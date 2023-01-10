@@ -1,4 +1,4 @@
-require("../../config/db.config");
+require("../db.conn");
 
 const User = require('./user.model');
 const { hashObj, hashObjCompare } = require("../utils/hash");

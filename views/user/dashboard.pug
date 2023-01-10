@@ -26,7 +26,7 @@ block content
     include ../includes/form-modal.pug
 
     
-    if !user.classes_joined && !user.classes_owned
+    if !user.classes_joined.length && !user.classes_owned.length
         div(class="no-classes")
         h4(class="mt-4") Join or Create a Class
     else

@@ -1,7 +1,4 @@
 const jsonwebtoken = require("jsonwebtoken");
-const dotenv = require("dotenv");
-
-dotenv.config();
 
 function generateToken(payload){
     try{
