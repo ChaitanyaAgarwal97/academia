@@ -1,0 +1,22 @@
+div(id="updateProfileModal" class="modal")
+  div(class="modal-content")
+    span(class="close") &times;
+
+    //- Modal heading
+    h4(class="mb-4") Update Profile
+
+    // Modal Form
+    form(method="POST" action="/user/updateProfile")
+        div(class="form-floating")        
+            input(type="text" class="form-control mb-3" id="name" name="name" value=user.name required=true)
+            label(for="name") Name
+        
+        div(class="form-floating")        
+            input(type="email" class="form-control mb-3" id="email" name="email" value=user.email required=true)
+            label(for="email") Email
+
+        div(class="form-floating")        
+            input(type="password" class="form-control mb-3" id="password" name="password")
+            label(for="password") Password
+
+        button(type="submit" class="btn btn-primary") Submit

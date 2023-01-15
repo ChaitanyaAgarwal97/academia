@@ -98,7 +98,7 @@ async function dashboard(req, res) {
             ],
         };
         let { _doc: { tokens, password, _id, __v, ...user } } = await userServices.classPopulate(popObj);
-        
+
         return res.render("user/dashboard", {
             page: "dashboard",
             user: user,
@@ -108,9 +108,14 @@ async function dashboard(req, res) {
     return res.redirect("/");
 }
 
+async function updateProfile(req, res) {
+    
+}
+
 module.exports = {
     signUp,
     logIn,
     dashboard,
     logOut,
+    updateProfile,
 };

@@ -25,7 +25,8 @@ block content
 
     include ../includes/form-modal.pug
 
-    
+    include ../includes/updateProfile-modal.pug
+
     if !user.classes_joined.length && !user.classes_owned.length
         div(class="no-classes")
         h4(class="mt-4") Join or Create a Class
@@ -44,5 +45,7 @@ block content
                         include ../includes/class-card.pug
 
 block scripts 
-    script(src="/js/includes/form-modal.js") 
+    script(src="/js/includes/form-modal.js")
+    script(src="/js/includes/updateProfile-modal.js")
+
             
