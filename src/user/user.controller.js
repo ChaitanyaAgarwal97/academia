@@ -98,7 +98,7 @@ async function dashboard(req, res) {
             ],
         };
         let { _doc: { tokens, password, _id, __v, ...user } } = await userServices.classPopulate(popObj);
-        
+
         return res.render("user/dashboard", {
             page: "dashboard",
             user: user,
@@ -108,9 +108,29 @@ async function dashboard(req, res) {
     return res.redirect("/");
 }
 
+async function updateProfile(req, res) {
+    const updateUserObj = req.body;
+    
+    try {
+        await userServices.updateUser(req.user, updateUserObj);
+
+        return res.redirect("/user/dashboard");
+    } catch (err) {
+        if (!err.httpCode) {
+            err.httpCode = 500;
+            err.msg = "Something went wrong";
+        }
+
+        return res.status(err.httpCode).render("common/error", {
+            error: err.msg,
+        });
+    }
+}
+
 module.exports = {
     signUp,
     logIn,
     dashboard,
     logOut,
+    updateProfile,
 };

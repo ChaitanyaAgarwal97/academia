@@ -21,6 +21,14 @@ services:
       - academia-mongo-db:/data/db
     env_file:
       - ./.env
+
+  academia-mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    env_file:
+      - ./.env
   
 volumes:
   academia-mongo-db:

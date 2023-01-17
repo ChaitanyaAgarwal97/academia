@@ -18,5 +18,6 @@ router.get("/logOut", userController.logOut);
 
 router.get("/dashboard", userController.dashboard);
 
+router.post('/updateProfile', auth, userController.updateProfile);
 
 module.exports = router;
