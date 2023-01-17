@@ -106,6 +106,33 @@ async function classPopulate({ user, paths }) {
     return await user.populate(paths);
 }
 
+async function updateUser(oldUserObj, newUserObj) {
+    try {
+        if(!newUserObj.name.trim().length || !newUserObj.email.trim().length) throw new HttpResponseError({
+            httpCode: 400, 
+            msg: "Please fill in all details",
+        });
+
+        if (oldUserObj.email !== newUserObj.email) {
+            let user = await User.findOne({ email: newUserObj.email });
+
+            if(user) throw new HttpResponseError({
+                httpCode: 400, 
+                msg: "Account already exists",
+            });
+        }
+        
+
+        if (oldUserObj.password !== newUserObj.password) newUserObj.password = await hashObj(newUserObj.password);
+
+        const updatedUser = await User.findByIdAndUpdate(oldUserObj._id, newUserObj);
+
+        return updatedUser;
+    } catch(err) {
+        throw err;
+    }
+}
+
 module.exports = {
     addUser,
     getUser,
@@ -113,4 +140,5 @@ module.exports = {
     addOwnedClass,
     addJoinedClass,
     classPopulate,
+    updateUser,
 };

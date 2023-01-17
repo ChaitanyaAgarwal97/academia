@@ -109,7 +109,22 @@ async function dashboard(req, res) {
 }
 
 async function updateProfile(req, res) {
+    const updateUserObj = req.body;
     
+    try {
+        await userServices.updateUser(req.user, updateUserObj);
+
+        return res.redirect("/user/dashboard");
+    } catch (err) {
+        if (!err.httpCode) {
+            err.httpCode = 500;
+            err.msg = "Something went wrong";
+        }
+
+        return res.status(err.httpCode).render("common/error", {
+            error: err.msg,
+        });
+    }
 }
 
 module.exports = {
