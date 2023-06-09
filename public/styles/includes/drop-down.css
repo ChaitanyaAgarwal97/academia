@@ -55,3 +55,22 @@
         display: none;
     }
 }
+
+.join-class-btns {
+  display: grid;
+  margin-left: 8px;
+}
+
+@media screen and (min-width:335px) and (max-width: 990px) {
+  .join-class-btns {
+      display: flex;
+      justify-content: flex-end;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .join-class-btns {
+      display: none;
+  }
+}
+

@@ -37,8 +37,8 @@ const classRoutes = require("./src/class/class.routes");
 
 app.use(homeRoutes);
 app.use("/user", userRoutes);
-app.use(indexRoutes);
 app.use("/class", classRoutes);
+app.use(indexRoutes);
 
 //  App listener
 app.listen(PORT, () => {

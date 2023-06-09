@@ -1,0 +1,32 @@
+extends ../base.pug
+
+block title 
+    title Academia | classObj.name
+
+block styles 
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,700,0,200")
+    link(rel="stylesheet" href="/styles/includes/form-modal.css")
+    link(rel="stylesheet" href="/styles/includes/drop-down.css")
+    link(rel="stylesheet" href="/styles/class/class.css")
+    link(rel="stylesheet" href="/styles/includes/new-announcement-modal.css")
+    link(rel="stylesheet" href="/styles/includes/class-announcement-card.css")
+
+
+
+block content
+    include ../includes/navbar.pug
+    div(class="container my-5")
+        h3= classObj.name
+        p= `Class Code - ${classObj.code}`
+        hr
+
+        button(id="createAnnouncementBtn" class="btn btn-outline-primary") New Announcement 
+
+        include ../includes/new-announcement-modal.pug
+
+        ul 
+            li     
+                include ../includes/class-announcement-card.pug
+
+block scripts 
+    script(src="/js/includes/new-announcement-modal.js") 

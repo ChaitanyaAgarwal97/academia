@@ -8,4 +8,6 @@ router.post("/create", auth, classController.createClass);
 
 router.post("/join", auth, classController.joinClass);
 
+router.get("/get/:id", auth, classController.getClass);
+
 module.exports = router;

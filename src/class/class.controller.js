@@ -56,7 +56,31 @@ async function joinClass(req, res) {
     }
 }
 
+async function getClass(req, res) {
+    const classId = req.params.id;
+    console.log(req.params)
+
+    try {
+        const classObj = await classServices.get(classId);
+        return res.status(200).render("class/class", {
+            page: "dashboard",
+            classObj: classObj,
+            announcement: {
+                _id: "dfhdhsdasj",
+                text: "doihdcdwf",
+                last_date: new Date(2022, 12, 21),
+                points: 100,
+            },
+        });
+    } catch (error) {
+        return res.status(500).render("common/error", {
+            error: "Something went wrong"
+        })
+    }
+}
+
 module.exports = {
     createClass,
     joinClass,
+    getClass,
 }
