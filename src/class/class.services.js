@@ -60,7 +60,18 @@ async function join(obj) {
     }
 }
 
+async function get(classId) {
+    try {
+        const classObj = await Class.findById(classId).populate('owner');
+        return classObj;
+    } catch(err) {
+        throw err;
+    }
+
+}
+
 module.exports = {
     create,
     join,
+    get,
 }
