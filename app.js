@@ -4,28 +4,35 @@ const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const { auth } = require("./src/middlewares/auth.common");
 const compression = require("compression");
+const { logger } = require("./src/utils/logger");
 
 //  App configuration
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
-app.set('views', './views');
-app.set('view engine', 'pug');
-app.use(express.static(path.join(__dirname, './public')));
+app.set("views", "./views");
+app.set("view engine", "pug");
+app.use(express.static(path.join(__dirname, "./public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(helmet(
-    {
-        contentSecurityPolicy: {
-            directives: {
-                "script-src": ["'self'", "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/"],
-                "img-src": ["'self' data:", "https://www.gstatic.com/classroom/"],
-                "style-src": ["'self' https: 'unsafe-inline'", "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/"],
-            }
-        }
-    }
-));
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        "script-src": [
+          "'self'",
+          "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/",
+        ],
+        "img-src": ["'self' data:", "https://www.gstatic.com/classroom/"],
+        "style-src": [
+          "'self' https: 'unsafe-inline'",
+          "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/",
+        ],
+      },
+    },
+  })
+);
 app.use(compression());
 app.use(auth);
 
@@ -42,5 +49,5 @@ app.use(indexRoutes);
 
 //  App listener
 app.listen(PORT, () => {
-    console.log(`App listening on port ${PORT}`);
+  logger.info(`App listening on port ${PORT}`);
 });
