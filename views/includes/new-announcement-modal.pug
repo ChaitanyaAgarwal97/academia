@@ -6,9 +6,12 @@ div(id="createAnnouncementModal" class="modal")
         h4(class="mb-4") New Announcement
 
         // Modal Form
-        form(method="POST" action="#")
+        form(method="POST" action="/announcement/create" enctype="multipart/form-data")
+            input(type="hidden" name="class" value=classObj._id)
+
             div(class="mb-4")
-                textarea(name="text" cols="30" rows="5" class="form-control" required=true) 
+                label(for="description" class="form-label") Description
+                textarea(name="description" id="description" cols="30" rows="5" class="form-control" required=true) 
 
             div(class="mb-4")
                 label(for="last-date" class="form-label") Last Date
@@ -17,7 +20,7 @@ div(id="createAnnouncementModal" class="modal")
             div(class="mb-4")
                 label(for="points" class="form-label") Points
                 div(class="d-flex flex-wrap mb-0")
-                    input(type="range" id="points" value="-1" name="points" min=0 max=100 class="form-range" list="values")
+                    input(type="range" id="points" value="0" name="points" min=0 max=100 class="form-range" list="values")
                     div(id="rangeValue") 0
                 datalist(id="values" class="d-flex justify-content-between mt-0")
                     option(value="0" label="0")

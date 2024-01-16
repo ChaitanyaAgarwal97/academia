@@ -14,7 +14,7 @@ app.set("views", "./views");
 app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, "./public")));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   helmet({
@@ -41,11 +41,13 @@ const homeRoutes = require("./src/home/home.routes");
 const userRoutes = require("./src/user/user.routes");
 const indexRoutes = require("./src/index.routes");
 const classRoutes = require("./src/class/class.routes");
+const announcementRoutes = require("./src/announcement/announcement.routes");
 
 app.use(homeRoutes);
 app.use("/user", userRoutes);
 app.use("/class", classRoutes);
 app.use(indexRoutes);
+app.use("/announcement", announcementRoutes);
 
 //  App listener
 app.listen(PORT, () => {

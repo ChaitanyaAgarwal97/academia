@@ -1,13 +1,15 @@
 div(class="card border-primary")
   div(class="card-body h-50")
-    div(class="card-title d-flex justify-content-between") 
+    div(class="card-title d-flex justify-content-between m-0") 
         div= classObj.owner.name
-        span(class="material-symbols-outlined" id="delete-announcement") delete
+        form(action="/announcement/delete" method="POST" id="delete-announcement-form") 
+          input(type="hidden" value=announcement._id + '@' + classObj._id name="id")
+          button(type="submit" class="material-symbols-outlined" id="delete-announcement") delete
     hr
     a(href="/announcement/" + announcement._id) 
-      p(class="card-text")= announcement.text 
+      p(class="card-text")= announcement.description 
   footer(class="card-header d-flex justify-content-between") 
-    if announcement.last_date
-        p= `Last Date: ${announcement.last_date.toLocaleDateString()}`
+    if announcement.lastDate
+        p= `Last Date: ${announcement.lastDate.toLocaleDateString()}`
     if announcement.points
         p= `Points: ${announcement.points}`

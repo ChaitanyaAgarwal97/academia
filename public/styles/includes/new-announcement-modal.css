@@ -3,8 +3,10 @@ datalist {
 }
 
 #points {
-    width: 94%;
-    margin-right: 1rem;
+  width: 94%;
+  margin-right: 1rem;
 }
 
-
+#delete-announcement {
+  cursor: pointer;
+}
