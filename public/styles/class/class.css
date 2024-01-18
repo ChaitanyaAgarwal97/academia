@@ -1,32 +1,36 @@
 h4 {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
-    color: #0d6efd;
-    width: 50%;
+  color: #0d6efd;
+  width: 50%;
 }
 
 #createAnnouncementBtn {
-    width: 95%;
-    margin: 2rem auto;
-    display: block;
+  width: 95%;
+  margin: 2rem auto;
+  display: block;
 }
 
 hr {
-    opacity: 50%;
+  opacity: 50%;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 li a {
-    /* font-style: none; */
-    text-decoration: none;
+  /* font-style: none; */
+  text-decoration: none;
 }
 
 ul {
-    padding: 0;
+  padding: 0;
+}
+
+#student-error-alert {
+  display: none;
 }

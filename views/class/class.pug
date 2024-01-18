@@ -15,21 +15,47 @@ block styles
 
 block content
     include ../includes/navbar.pug
+    nav
+        ul(class="nav nav-tabs justify-content-center" role="tablist")
+            li(class="nav-item")
+                button(class="nav-link active" data-bs-toggle="tab" data-bs-target="#announcement-tab-pane" role="tab" aria-controls="announcement-tab-pane" aria-selected="true" type="button" id="announcement-tab") Announcements
+            li(class="nav-item")
+                button(class="nav-link" data-bs-toggle="tab" data-bs-target="#student-tab-pane" role="tab" aria-controls="student-tab-pane" aria-selected="false" type="button" id="student-tab") Students
+    
     if announcementDelete
-        div(class=`alert alert-danger` role="alert" hidden=!announcementDelete.isDeleted id="error-alert")= announcementDelete.message
-    div(class="container my-5")
-        h3= classObj.name
-        p= `Class Code - ${classObj.code}`
-        hr
+        div(class=`alert alert-danger alert-dismissible fade show` role="alert" hidden=!announcementDelete.isDeleted id="error-alert")
+            span= announcementDelete.message
+            button(type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close")
 
-        button(id="createAnnouncementBtn" class="btn btn-outline-primary") New Announcement 
+    div(class="tab-content")
+        div(class="tab-pane fade show active" id="announcement-tab-pane" role="tabpanel" aria-labelledby="announcement-tab" tabindex="0")
+            div(class="container my-5")
+                h3= classObj.name
+                p= `Class Code - ${classObj.code}`
+                hr
 
-        include ../includes/new-announcement-modal.pug
+                button(id="createAnnouncementBtn" class="btn btn-outline-primary") New Announcement 
 
-        ul 
-            each announcement in announcements
-                li     
-                    include ../includes/class-announcement-card.pug
+                include ../includes/new-announcement-modal.pug
+
+                ul 
+                    each announcement in announcements
+                        li     
+                            include ../includes/class-announcement-card.pug
+
+        div(class="tab-pane fade" id="student-tab-pane" role="tabpanel" aria-labelledby="student-tab" tabindex="0")
+            div(class=`alert alert-danger alert-dismissible fade show` role="alert" id="student-error-alert")
+                span
+                button(type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close")
+            div(class="container my-5 table-responsive")
+                table(class="table text-primary")
+                    tbody
+                            each student in students
+                                tr(class="align-middle")
+                                    td= student.name
+                                    td(class="d-flex justify-content-end")
+                                        button(type="button" id=`${classObj._id}-${student._id}` class="remove-student btn btn-danger") Remove
 
 block scripts 
     script(src="/js/includes/new-announcement-modal.js") 
+    script(src="/js/class/studentRemove.js") 

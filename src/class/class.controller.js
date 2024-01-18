@@ -1,6 +1,7 @@
 const {
   getAnnouncementByClassId,
 } = require("../announcement/announcement.services");
+const { logger } = require("../utils/logger");
 const classServices = require("./class.services");
 
 async function createClass(req, res) {
@@ -68,6 +69,7 @@ async function getClass(req, res) {
       page: "dashboard",
       classObj: classObj,
       announcements: await getAnnouncementByClassId(classId),
+      students: await classServices.getStudentsByClassId(classId),
     });
   } catch (error) {
     return res.status(500).render("common/error", {
@@ -76,8 +78,29 @@ async function getClass(req, res) {
   }
 }
 
+async function removeStudent(req, res) {
+  const studentId = req.body.studentId;
+  const classId = req.body.classId;
+
+  try {
+    const isDeleted = await classServices.removeStudentById(studentId, classId);
+
+    if (!isDeleted) throw "";
+
+    res.status(200).json({
+      isDeleted: true,
+    });
+  } catch (error) {
+    logger.info(error);
+    res.status(400).json({
+      isDeleted: false,
+    });
+  }
+}
+
 module.exports = {
   createClass,
   joinClass,
   getClass,
+  removeStudent,
 };
